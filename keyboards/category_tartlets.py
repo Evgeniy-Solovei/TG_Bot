@@ -1,8 +1,11 @@
-from aiogram import types, F
+from aiogram import types, F, Router
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from loader import dp
 
+router_tartlets = Router()
 
+
+@router_tartlets.callback_query(F.data == 'tartlets')
 async def info_tartlets(callback: types.CallbackQuery):
     tartlets = [
         types.InlineKeyboardButton(text='ℹ️ Информация о продукте', callback_data='info'),

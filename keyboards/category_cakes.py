@@ -1,8 +1,11 @@
-from aiogram import types, F
+from aiogram import types, F, Router
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from loader import dp
 
+router_cakes = Router()
 
+
+@router_cakes.callback_query(F.data == 'cakes')
 async def list_cakes(callback: types.CallbackQuery):
     """Кнопки показывающие названия тортов"""
     cakes = [

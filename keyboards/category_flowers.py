@@ -1,8 +1,11 @@
-from aiogram import types, F
+from aiogram import types, F, Router
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from loader import dp
 
+router_flowers = Router()
 
+
+@router_flowers.callback_query(F.data == 'flowers')
 async def info_flowers(callback: types.CallbackQuery):
     flowers = [
         types.InlineKeyboardButton(text='ℹ️ Информация о продукте', callback_data='info'),

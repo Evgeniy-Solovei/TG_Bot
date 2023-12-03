@@ -1,6 +1,4 @@
 from aiogram import types
-from aiogram.types import InlineKeyboardMarkup
-from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 
 async def start_list_categories(message: types.Message):

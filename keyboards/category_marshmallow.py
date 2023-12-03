@@ -1,10 +1,13 @@
-from aiogram import types, F
+from aiogram import types, F, Router
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 from keyboards.category_cakes import list_cakes
 from loader import dp
 
+router_marshmallow = Router()
 
+
+@router_marshmallow.callback_query(F.data == 'marshmallow')
 async def info_marshmallow(callback: types.CallbackQuery):
     marshmallows = [
         types.InlineKeyboardButton(text='ℹ️ Информация о продукте', callback_data='info'),
