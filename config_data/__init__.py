@@ -1,1 +1,1 @@
-from .config import RAPID_API_TOKEN, BOT_TOKEN, DEFAULT_COMMANDS
+from .config import API_TOKEN, BOT_TOKEN, DEFAULT_COMMANDS

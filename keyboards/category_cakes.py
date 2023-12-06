@@ -35,7 +35,7 @@ cakes_info = {
 }
 
 
-@dp.callback_query(F.data.in_({'esterhazy', 'black_forest', 'napoleon'}))
+@router_cakes.callback_query(F.data.in_({'esterhazy', 'black_forest', 'napoleon'}))
 async def instance_cake(callback: types.CallbackQuery):
     cake = cakes_info[callback.data]
     buttons = [
@@ -47,10 +47,6 @@ async def instance_cake(callback: types.CallbackQuery):
         builder.row(button)
     await callback.message.answer('Выбери пункт', reply_markup=builder.as_markup(resize_keyboard=True))
 
-    @dp.callback_query(F.data == 'info')
-    async def instance_info(callback: types.CallbackQuery):
-        await callback.message.answer('Информация о продукте для заполнения')
-
-    @dp.callback_query(F.data == 'data')
-    async def instance_info(callback: types.CallbackQuery):
-        await callback.message.answer('Тут должен быть апи Календаря')
+    @router_cakes.callback_query(F.data == 'info')
+    async def instance_info(callback_query: types.CallbackQuery):
+        await callback_query.message.answer('Информация о продукте для заполнения')
