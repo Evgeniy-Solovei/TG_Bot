@@ -9,10 +9,6 @@ async def db_start():
                               "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                               "id_user INTEGER,"
                               "name_user TEXT,"
-                              "product TEXT DEFAULT '',"  # будем брать название продукта из кнопки,т.к. товара в БД нету
-                              "data_order DATE,"
-                              "reminder_date DATE,"
-                              "comment TEXT DEFAULT '',"
                               "start_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP)")
 
         await db.commit()
