@@ -7,7 +7,7 @@ from config_data.config import BOT_TOKEN, API_TOKEN
 logging.basicConfig(level=logging.DEBUG)
 
 """Создание экземпляра бота, он обеспечивает через API работу с серверами TG"""
-bot = Bot(token=BOT_TOKEN)
+bot = Bot(token=BOT_TOKEN, parse_mode='HTML')
 
 """Диспетчер, предназначен для обработки обновлений от пользователя. Определяет, как бот должен на них отреагировать."""
 dp = Dispatcher(storage=MemoryStorage())
