@@ -9,6 +9,7 @@ router_tartlets = Router()
 
 @router_tartlets.callback_query(F.data == 'tartlets')
 async def info_tartlets(callback: types.CallbackQuery):
+    """Вывод информации от tartlets"""
     tartlets = tartlets_info['info']
     photos = tartlets_info['photos']
     album_builder = MediaGroupBuilder(caption=tartlets)

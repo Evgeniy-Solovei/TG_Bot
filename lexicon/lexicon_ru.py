@@ -1,7 +1,8 @@
-
 cakes_info = {
     'esterhazy': {
-        'info': 'ℹ️ Тут Информация о esterhazy',
+        'info': 'Состав: '
+                'Срок годности и условия хранения:'
+                'Цена: ',
         'photos': ['static/cakes/esterhazy/esterhazy.jpg',
                    'static/cakes/esterhazy/esterhazy_2.jpg']
     },

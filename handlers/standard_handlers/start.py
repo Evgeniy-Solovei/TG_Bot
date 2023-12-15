@@ -9,6 +9,7 @@ router = Router()
 
 @router.message(Command('start'))
 async def cmd_start(message: types.Message):
+    """Запуск бота"""
     await cmd_start_db(message.from_user.id, message.from_user.full_name)
     await message.answer(f'Добро пожаловать, <b>{message.from_user.first_name}</b>', parse_mode='HTML',
                          reply_markup=menu_keyboard)

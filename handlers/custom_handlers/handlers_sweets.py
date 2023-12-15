@@ -9,12 +9,14 @@ router_sweets = Router()
 
 
 @router_sweets.callback_query(F.data == 'sweets')
-async def cakes(callback: types.CallbackQuery):
+async def sweet(callback: types.CallbackQuery):
+    """Вывод кнопок категории sweets"""
     await callback.message.answer('Выберите продукт: ', reply_markup=categories_sweets)
 
 
 @router_sweets.callback_query(F.data.in_({'irish', 'truffle'}))
 async def instance_sweets(callback: types.CallbackQuery):
+    """Вывод информации от sweets"""
     sweets = sweets_info[callback.data]['info']
     photos = sweets_info[callback.data]['photos']
     album_builder = MediaGroupBuilder(caption=sweets)

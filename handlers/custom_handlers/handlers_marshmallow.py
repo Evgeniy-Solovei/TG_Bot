@@ -9,6 +9,7 @@ router_marshmallow = Router()
 
 @router_marshmallow.callback_query(F.data == 'marshmallow')
 async def info_marshmallow(callback: types.CallbackQuery):
+    """Вывод информации о marshmallow"""
     marshmallow = marshmallow_info['info']
     photos = marshmallow_info['photos']
     album_builder = MediaGroupBuilder(caption=marshmallow)

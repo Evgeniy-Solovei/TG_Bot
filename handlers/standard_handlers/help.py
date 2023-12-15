@@ -6,6 +6,7 @@ router = Router()
 
 @router.message(Command('help'))
 async def cmd_help(message: types.Message):
+    """Вывод информации, о доступных командах"""
     help_text = """
     Список доступных команд:
 

@@ -1,8 +1,13 @@
 from datetime import datetime
 import requests
 from aiogram import F, Router
+from aiogram.filters import StateFilter
+from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
+
+from keyboards.list_categories import list_categories
 from loader import api_weather
+from states.weather_state import ControlWeather
 
 router_menu = Router()
 
@@ -12,20 +17,23 @@ router_menu = Router()
 #     await message.answer("Я не знаю, что ответить на это сообщение.")
 
 
-@router_menu.message(F.text == 'Хотите узнать погоду ?')
-async def input_city(message: Message):
-    await message.answer(text='Введите интересующий вас город:')
-
-
 @router_menu.message(F.text == 'Instagram')
 async def weather(message: Message):
+    """Ссылка на страницу в Instagram"""
     await message.answer(
         text='https://instagram.com/solovey_desert'
     )
 
 
-@router_menu.message(F.text)
-async def weather(message: Message):
+@router_menu.message(StateFilter(None), F.text == 'Хотите узнать погоду ?')
+async def input_city(message: Message, state: FSMContext):
+    """Ввод города пользователем для API"""
+    await message.answer(text='Введите интересующий вас город:')
+    await state.set_state(ControlWeather.api_weather)
+
+
+@router_menu.message(ControlWeather.api_weather, F.text)
+async def weather(message: Message, state: FSMContext):
     try:
         code_to_smile = {
             "Clear": "Ясно \U00002600",
@@ -62,13 +70,21 @@ async def weather(message: Message):
                                 f'Восход солнца: {sunrise}\n'
                                 f'Заход солнца: {sunset}\n'
                                 f'Продолжительность дня: {length_of_day}')
+            await state.clear()
         else:
             await message.reply('Мне кажется, вы ввели не правильно город, попробуйте ещё раз')
-            await input_city(message)
+            await input_city(message, state)
     except Exception as e:
         print(f"An error occurred: {e}")
         await message.answer(
             'Произошла ошибка при получении данных о погоде. Попробуйте позже или введите другой город.')
 
 
+@router_menu.message(F.text == 'Главное меню')
+async def menu(message: Message):
+    await message.answer(text='Выберите продукт: ', reply_markup=list_categories)
 
+
+@router_menu.message()
+async def answer_all(message: Message):
+    await message.answer(text='Выберите продукт: ', reply_markup=list_categories)
