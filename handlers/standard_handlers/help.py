@@ -12,6 +12,5 @@ async def cmd_help(message: types.Message):
 
     /start - Запуск бота.
     /help - Вывод всех доступных команд бота.
-    /history - Вывод пользователю информации о его заказах (Не реализовано)
     """
     await message.answer(help_text)
