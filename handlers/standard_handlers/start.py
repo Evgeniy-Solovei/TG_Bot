@@ -14,13 +14,3 @@ async def cmd_start(message: types.Message):
     await message.answer(f'Добро пожаловать, <b>{message.from_user.first_name}.</b>',
                          reply_markup=menu_keyboard)
     await message.answer('Выберите продукт: ', reply_markup=list_categories)
-
-
-
-    # """Вывод фото из компа"""
-    # image_from_pc = FSInputFile('static/photo/1.png')
-    # await message.answer_photo(
-    #     image_from_pc,
-    #     caption="Описание фото"
-    # )
-

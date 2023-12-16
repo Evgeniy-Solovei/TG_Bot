@@ -34,6 +34,7 @@ async def input_city(message: Message, state: FSMContext):
 
 @router_menu.message(ControlWeather.api_weather, F.text)
 async def weather(message: Message, state: FSMContext):
+    """Вывод информации о погоде через API"""
     try:
         code_to_smile = {
             "Clear": "Ясно \U00002600",
@@ -82,9 +83,11 @@ async def weather(message: Message, state: FSMContext):
 
 @router_menu.message(F.text == 'Главное меню')
 async def menu(message: Message):
+    """Вывод клавиатуры главного меню, при нажатии на кнопку"""
     await message.answer(text='Выберите продукт: ', reply_markup=list_categories)
 
 
 @router_menu.message()
 async def answer_all(message: Message):
+    """Вывод клавиатуры главного меню на все сообщения от пользователя, которые не зарегистрированы"""
     await message.answer(text='Выберите продукт: ', reply_markup=list_categories)

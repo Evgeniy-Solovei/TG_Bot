@@ -11,14 +11,3 @@ buttons = [
 ]
 
 list_categories = types.InlineKeyboardMarkup(inline_keyboard=buttons, resize_keyboard=True)
-
-
-
-# """Простые кнопки которые крепятся снизу"""
-# async def start_list_categories(message: types.Message):
-#     buttons = ['🎂 Торты', '🦄 Маршмеллоу', '🌷 Зефирные цветы', '🥮 Тарталетки', '🍬 Конфеты']
-#     builder = ReplyKeyboardBuilder()
-#     for button in buttons:
-#         builder.add(types.KeyboardButton(text=str(button)))
-#     builder.adjust(4)
-#     await message.answer("Выбери продукт:", reply_markup=builder.as_markup(resize_keyboard=True))
