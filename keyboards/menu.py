@@ -7,4 +7,4 @@ buttons = [
     [types.KeyboardButton(text='Instagram')],
 
 ]
-menu_keyboard = types.ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True, one_time_keyboard=True)
+menu_keyboard = types.ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True, one_time_keyboard=False)
